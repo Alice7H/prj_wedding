@@ -20,25 +20,25 @@ export async function userProductsRoutes(app: FastifyInstance) {
     return userProduct;
   })
 
-  app.post('/favorite_prod/:id', async (request) => {
-    const paramsSchema = z.object({ id: z.string().uuid() })
-    const { id } = paramsSchema.parse(request.params)
+  app.post('/favorite_prod', async (request) => {
+    const bodySchema = z.object({
+      userId: z.string().uuid(),
+      productId: z.string().uuid()
+    })
+    const { userId, productId } = bodySchema.parse(request.body)
 
-    const bodySchema = z.object({userId: z.string() })
-    const { userId } = bodySchema.parse(request.body)
-
-    const response = await prisma.userProduct.create({ data: { userId, productId: id }})
+    const response = await prisma.userProduct.create({ data: { userId, productId }})
     return response
   })
 
-  app.delete('/favorite_prod/:id', async (request) => {
-    const paramsSchema = z.object({ id: z.string().uuid() })
-    const { id } = paramsSchema.parse(request.params)
+  app.delete('/favorite_prod', async (request) => {
+    const bodySchema = z.object({
+      userId: z.string().uuid(),
+      productId: z.string().uuid()
+    })
+    const { userId, productId } = bodySchema.parse(request.body)
 
-    const bodySchema = z.object({userId: z.string() })
-    const { userId } = bodySchema.parse(request.body)
-
-    const response = await prisma.userProduct.deleteMany({ where: { productId: id, userId: userId } })
+    const response = await prisma.userProduct.deleteMany({ where: { productId, userId} })
     return response
   })
 }
