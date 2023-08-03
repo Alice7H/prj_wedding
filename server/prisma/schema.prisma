@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String
+  hashPassword String
+  avatarUrl    String
+  favProducts  UserProduct[]
+}
+
+model Product {
+  id           String        @id @default(uuid())
+  name         String
+  coverUrl     String
+  description  String
+  price        String
+  composition  String
+  color        String
+  length       String
+  measurements String
+  quantity     Int
+  createdAt    DateTime      @default(now())
+  userProd     UserProduct[]
+  category     String
+}
+
+model UserProduct {
+  id        String  @id @default(uuid())
+  productId String
+  userId    String
+  user      User    @relation(fields: [userId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
+}
+
+// model Category {
+//   id        String  @id @default(uuid())
+//   name      String
+//   code      String  @unique
+//   productId String
+//   product   Product @relation(fields: [productId], references: [id])
+// }
