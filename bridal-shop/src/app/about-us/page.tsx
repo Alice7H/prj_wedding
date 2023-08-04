@@ -1,4 +1,6 @@
 import { Footer } from "@/components/Footer";
+import Image from "next/image";
+import imageAboutUs from "../../../public/dresses/about_us.svg";
 
 export default function AboutUs() {
   return (
@@ -21,9 +23,7 @@ export default function AboutUs() {
               Deserunt perferendis tenetur veniam voluptatem nemo alias impedit nam atque.
             </p>
           </div>
-          <div className="border w-[300px] h-[450px] mx-auto">
-            imagem
-          </div>
+          <Image src={imageAboutUs} alt="vestido" className="border w-[300px] mx-auto" />
         </div>
       </main>
       <Footer/>

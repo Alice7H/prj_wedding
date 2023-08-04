@@ -7,7 +7,9 @@ module.exports = {
   ],
   theme: {
     colors: {
-      main: '#5B3D25'
+      main: '#5B3D25',
+      white: '#FFFFFF',
+      black: '#000000'
     },
     fontSize: {
       sm: ['14px', '20px'],

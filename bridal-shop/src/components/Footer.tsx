@@ -6,7 +6,7 @@ import tiktokIcon from "../../public/tiktok.png";
 
 export function Footer() {
   return (
-    <footer className="mt-16 relative">
+    <footer className="mt-16 relative px-8">
       {/* button to top */}
       <div className="flex flex-col sm:flex-row justify-around items-center sm:items-start">
         <div>
