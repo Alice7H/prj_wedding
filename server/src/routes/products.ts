@@ -31,7 +31,7 @@ export async function productsRoutes(app: FastifyInstance) {
   })
 
   app.get('/product/accessories', async (_, reply) => {
-    const product = await prisma.product.findMany({ where: { category: 'acessórios' }})
+    const product = await prisma.product.findMany({ where: { category: { contains: 'acessório' }}})
     if(product.length == 0){
       return reply.status(404).send()
     }
