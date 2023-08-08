@@ -20,7 +20,9 @@ To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/d
 Example: `http://localhost:3333/products` => get a list of products
 
 - Get products: `/products`
-- Get product by id: `/products/:id`
+- Get dresses: `/product/dresses`
+- Get accessories: `/product/accessories`
+- Get product by id: `/product/:id`
 - Post product: `/product`
 - Update product: `/product/:id`
 
