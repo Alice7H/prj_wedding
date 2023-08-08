@@ -1,7 +1,8 @@
 import 'dotenv/config'
 import fastify from 'fastify'
 import jwt from '@fastify/jwt'
-// import cors from '@fastify/cors'
+import rateLimit from '@fastify/rate-limit'
+import cors from '@fastify/cors'
 // import { resolve } from 'node:path'
 import { rootRoutes } from './routes/root'
 import { authRoutes } from './routes/auth'
@@ -10,7 +11,15 @@ import { usersRoutes } from './routes/user'
 import {userProductsRoutes } from './routes/favorites'
 import 'dotenv/config'
 
-const app = fastify()
+const secretKey = process.env.JWT_SECRET_KEY as string;
+const logLevel = process.env.LOGLEVEL as string;
+
+const app = fastify({
+  disableRequestLogging: true,
+ logger: { level: logLevel }
+})
+
+app.register(rateLimit, { max: 10, timeWindow: '10 minutes'})
 
 // app.register(multipart)
 
@@ -19,12 +28,11 @@ const app = fastify()
 //   prefix: '/uploads',
 // })
 
-// app.register(cors, {
-//   origin: true, // all URLs are allowed. other example - origin: ['http://localhost:3000']
-// })
+app.register(cors, {
+  origin: true, // all URLs are allowed. other example - origin: ['http://localhost:3000']
+})
 
-const secretKey = process.env.JWT_SECRET_KEY as string;
-app.register(jwt, { secret: secretKey})
+app.register(jwt, { secret: secretKey, sign:{ expiresIn: '1d'}})
 
 app.register(rootRoutes)
 app.register(authRoutes)

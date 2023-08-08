@@ -6,6 +6,7 @@ import { User } from '@prisma/client'
 export async function usersRoutes(app: FastifyInstance) {
   app.addHook('preHandler', async(request) => {
     await request.jwtVerify()
+    app.rateLimit()
   })
 
   app.get('/users', async () => {

@@ -4,7 +4,12 @@ import { prisma } from '../lib/prisma'
 import { Product } from '@prisma/client'
 
 export async function productsRoutes(app: FastifyInstance) {
-  app.get('/products', async () => {
+  app.get('/products',   {
+    config: {
+      rateLimit: undefined
+    }
+  },
+  async () => {
     const products = await prisma.product.findMany({ orderBy: { createdAt: 'asc'}})
     return products.map((product: Product) => {
       return {
@@ -15,6 +20,22 @@ export async function productsRoutes(app: FastifyInstance) {
         quantity: product.quantity,
       }
     })
+  })
+
+  app.get('/product/dresses', async (_, reply) => {
+    const product = await prisma.product.findMany({ where: { category: 'vestido' }})
+    if(product.length == 0){
+      return reply.status(404).send()
+    }
+    return product
+  })
+
+  app.get('/product/accessories', async (_, reply) => {
+    const product = await prisma.product.findMany({ where: { category: 'acessórios' }})
+    if(product.length == 0){
+      return reply.status(404).send()
+    }
+    return product
   })
 
   app.get('/product/:id', async (request, reply) => {
@@ -29,6 +50,7 @@ export async function productsRoutes(app: FastifyInstance) {
 
   app.post('/product', async (request) => {
     await request.jwtVerify();
+    app.rateLimit()
     const bodySchema = z.object({
       name: z.string(),
       description: z.string(),
@@ -67,6 +89,7 @@ export async function productsRoutes(app: FastifyInstance) {
 
   app.put('/product/:id', async (request, reply) => {
     await request.jwtVerify();
+    app.rateLimit()
     const paramsSchema = z.object({ id: z.string().uuid() })
     const { id } = paramsSchema.parse(request.params)
 

@@ -1,11 +1,11 @@
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma'
-import { Product, UserProduct } from '@prisma/client'
 
 export async function userProductsRoutes(app: FastifyInstance) {
   app.addHook('preHandler', async(request) => {
     await request.jwtVerify()
+    app.rateLimit()
   })
 
   app.get('/user/favorite_prod/:id', async(request) => {
