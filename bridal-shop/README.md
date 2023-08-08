@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bridal Shop
 
-## Getting Started
+É um projeto front-end apresentando vestidos e acessórios para noivas com suas respectivas descrições, preços, sendo possível adicioná-los a um carrinho de compras e favoritar os produtos.
 
-First, run the development server:
+## Inicializando
+
+Primeiro, rode o servidor em modo de desenvolvimento:
 
 ```bash
 npm run dev
@@ -12,23 +14,32 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você verá o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Banner](../bridal-shop/public/banner.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Páginas
 
-## Learn More
+- Landing Page
+- Galeria de vestidos
+- Galeria de acessórios
+- Sobre nós
+- Login
+- Cadastro de usuários
 
-To learn more about Next.js, take a look at the following resources:
+## Em construção
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Filtro de vestidos: ofertas, para noite, para dia, coquetel.
+- Filtro de acessórios: ofertas, tiara, coroa, videira, véu, luva.
+- Exibir detalhes de vestidos
+- Exibir detalhes de acessórios
+- Adicionar itens (acessórios e vestidos) no carrinho de compras
+- Favoritar itens do usuário
+- Lógica dos formulários de login e cadastro do usuário.
+- Definindo layout de rotas
+- Rota de logout
+- Middleware de autenticação
+- Salvar token nos cookies
+- Exibir produtos e total no carrinho de compras
+- Salvar produtos no localStorage
+- Exibir lista com itens favoritos

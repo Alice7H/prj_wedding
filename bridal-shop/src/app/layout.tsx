@@ -23,7 +23,7 @@ export default function RootLayout({children}: IRootLayout) {
   return (
     <html lang="pt-br">
       <body className={inika.className}>
-        <header className='p-4 flex flex-col sm:flex-row justify-between items-center'>
+        <header className='px-16 p-4 mb-8 flex flex-col sm:flex-row justify-between items-center'>
           <Image src={logo} alt="Logo" className="self-center sm:self-start" width={40} height={40}/>
           <ul className="flex flex-col sm:flex-row items-center gap-2 text-main p-2">
             <li><a className="hover:underline" href="/">Home</a></li>
