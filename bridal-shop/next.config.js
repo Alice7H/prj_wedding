@@ -11,7 +11,17 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.kleinfeldbridal.com',
         port: '',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.libertyinlove.co.uk',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.shopify.com',
+        port: '',
+      },
     ],
   }
 }

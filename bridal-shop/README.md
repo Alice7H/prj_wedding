@@ -29,8 +29,8 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 
 ## Em construção
 
-- Filtro de vestidos: ofertas, para noite, para dia, coquetel.
-- Filtro de acessórios: ofertas, tiara, coroa, videira, véu, luva.
+- Filtro de vestidos: ofertas, alta costura, clássico, romântico e moderno.
+- Filtro de acessórios: ofertas, tiara, videira, véu, luva.
 - Exibir detalhes de vestidos
 - Exibir detalhes de acessórios
 - Adicionar itens (acessórios e vestidos) no carrinho de compras
