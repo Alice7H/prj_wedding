@@ -19,7 +19,7 @@ const app = fastify({
  logger: { level: logLevel }
 })
 
-app.register(rateLimit, { max: 10, timeWindow: '10 minutes'})
+// app.register(rateLimit, { max: 10, timeWindow: '10 minutes'})
 
 // app.register(multipart)
 
