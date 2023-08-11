@@ -17,8 +17,8 @@ export default function Home() {
           <div>
             <h1 className="max-w-full sm:max-w-[50%] text-title text-main font-bold text-center mb-3 mt-1">Vestidos de noiva</h1>
             <ul className="sm:w-[40vw] flex flex-col gap-2 text-main text-lg">
-              <li> - Vestidos para noite</li>
-              <li> - Vestidos para Coquetéis</li>
+              <li> - Vestidos modernos</li>
+              <li> - Vestidos de alta costura</li>
               <li> - Ofertas</li>
               <li className="self-center">
                 <LinkButton path="/register" text="Inscreva-se"/>

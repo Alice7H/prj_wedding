@@ -16,7 +16,7 @@ export function Pagination(
 ){
   return (
     <div className='py-2 text-right pr-4 sm:pr-8'>
-      <p className="text-main">Total de vestidos: {totalProducts}</p>
+      <p className="text-main">Total de itens: {totalProducts}</p>
       <nav className=""/>
       <div>
         <nav
