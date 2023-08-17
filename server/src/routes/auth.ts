@@ -38,7 +38,7 @@ export async function authRoutes(app: FastifyInstance) {
   })
 
   app.post('/login', async (request, reply) => {
-    app.rateLimit()
+    // app.rateLimit()
     const userSchema = z.object({
       email: z.string(),
       password: z.string(),

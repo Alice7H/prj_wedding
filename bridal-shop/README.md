@@ -27,19 +27,23 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Login
 - Cadastro de usuários
 
-## Em construção
+## Concluído
 
 - Filtro de vestidos: ofertas, alta costura, clássico, romântico e moderno.
 - Filtro de acessórios: ofertas, tiara, videira, véu, luva.
 - Exibir detalhes de vestidos
+- Selecionar o tamanho do vestido
 - Exibir detalhes de acessórios
+- Rota de logout
+- Salvar token nos cookies
+
+## Em construção
+
 - Adicionar itens (acessórios e vestidos) no carrinho de compras
 - Favoritar itens do usuário
 - Lógica dos formulários de login e cadastro do usuário.
 - Definindo layout de rotas
-- Rota de logout
 - Middleware de autenticação
-- Salvar token nos cookies
 - Exibir produtos e total no carrinho de compras
 - Salvar produtos no localStorage
 - Exibir lista com itens favoritos

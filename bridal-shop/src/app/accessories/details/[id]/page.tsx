@@ -4,8 +4,8 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/Products";
-
-const url = 'http://localhost:3333'
+import { api } from "@/lib/api";
+import { FavoriteProduct } from "@/containers/FavoriteProduct";
 
 export default function AccessoriesDetails() {
   const params = useParams();
@@ -14,14 +14,9 @@ export default function AccessoriesDetails() {
 
   useEffect(()=> {
     async function getProduct(){
-      const res = await fetch(`${url}/product/${id}`, {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-      })
-
-      if(!res.ok) throw new Error('Erro 404, acessório não encontrado')
-
-      const data = await res.json() as Product;
+      const res = await api.get(`/product/${id}`)
+      if(res.status !== 200 ) throw new Error('Erro 404, acessório não encontrado')
+      const data = await res.data as Product;
       setProduct(data);
     }
     getProduct()
@@ -29,7 +24,7 @@ export default function AccessoriesDetails() {
 
   return (
     <>
-      <main>
+      <main className="px-8">
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-main">
         <div className="leading-loose">
           <h1 className="text-title">{product?.name}</h1>
@@ -47,10 +42,15 @@ export default function AccessoriesDetails() {
           <Image className="rounded-3xl" src={product?.coverUrl as string} alt="Vestido" width={400} height={400}/>
         </div>
       </div>
-      <div className="flex items-center justify-center gap-4 text-center w-1/2">
-        <button className="text-main font-bold border rounded-lg py-2 px-4 mt-4"  disabled={product?.quantity == 0 ? true : false}>Comprar</button>
-        <button className="text-main font-bold border rounded-lg py-2 px-4 mt-4">Favoritar</button>
-      </div>
+      {
+      product && product.quantity > 0  &&
+        <div className="flex items-center justify-center gap-4 text-center w-full sm:w-1/2">
+          <button className="text-main font-bold border rounded-lg py-2 px-4 mt-4" disabled={product?.quantity == 0 ? true : false} >
+            Comprar
+          </button>
+          <FavoriteProduct product={product} />
+        </div>
+      }
     </main>
     <Footer />
   </>
