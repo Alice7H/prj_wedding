@@ -3,10 +3,9 @@ import { Filter } from "@/components/Filter";
 import { Footer } from "@/components/Footer";
 import { Pagination } from "@/components/Pagination";
 import { ProductList } from "@/components/ProductList";
+import { api } from "@/lib/api";
 import { Product } from "@/types/Products";
 import { useEffect, useState } from "react";
-
-const url = 'http://localhost:3333';
 
 interface IProps {
   title: string;
@@ -29,19 +28,17 @@ export function Products({urlType, type, title}: IProps) {
   useEffect(() => {
     async function getProducts(){
       setLoading(true);
-      fetch(`${url}/product/${urlType}`, {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'}
-      }).then(response => response.json())
-      .then(data => {
+      try{
+        const res = await api.get(`/product/${urlType}`)
+        const data = await res.data;
         setLoading(false);
-        if(data) {
+        if(data){
           setProducts(data);
         }
-      }).catch(err => {
+      } catch(err) {
         console.error(err);
         setLoading(false);
-      });
+      };
     }
     getProducts()
   }, [urlType])

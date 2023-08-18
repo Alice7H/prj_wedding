@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Product } from "@/types/Products";
 import { api } from "@/lib/api";
-import { FavoriteProduct } from "@/containers/FavoriteProduct";
+import { AddFavoriteProduct } from "@/containers/AddFavoriteProduct";
 
 export default function AccessoriesDetails() {
   const params = useParams();
@@ -39,7 +39,9 @@ export default function AccessoriesDetails() {
           <p>Composição: {product?.composition}</p>
         </div>
         <div className="flex">
-          <Image className="rounded-3xl" src={product?.coverUrl as string} alt="Vestido" width={400} height={400}/>
+          {
+            product?.coverUrl &&  <Image className="rounded-3xl" src={product.coverUrl} alt="Vestido" width={400} height={400}/>
+          }
         </div>
       </div>
       {
@@ -48,7 +50,7 @@ export default function AccessoriesDetails() {
           <button className="text-main font-bold border rounded-lg py-2 px-4 mt-4" disabled={product?.quantity == 0 ? true : false} >
             Comprar
           </button>
-          <FavoriteProduct product={product} />
+          <AddFavoriteProduct product={product} />
         </div>
       }
     </main>

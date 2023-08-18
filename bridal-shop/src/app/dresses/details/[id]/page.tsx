@@ -5,7 +5,7 @@ import { Product } from "@/types/Products";
 import { useEffect, useState } from "react";
 import { Footer } from "@/components/Footer";
 import { BuyProduct } from "@/containers/BuyProduct";
-import { FavoriteProduct } from "@/containers/FavoriteProduct";
+import { AddFavoriteProduct } from "@/containers/AddFavoriteProduct";
 import { api } from "@/lib/api";
 
 export default function DressesDetails(){
@@ -40,14 +40,16 @@ export default function DressesDetails(){
             <p>Composição: {product?.composition}</p>
           </div>
           <div className="flex">
-            <Image className="rounded-3xl" src={product?.coverUrl as string} alt="Vestido" width={400} height={400}/>
+            {
+              product?.coverUrl && <Image className="rounded-3xl" src={product.coverUrl} alt="Vestido" width={400} height={400}/>
+            }
           </div>
         </div>
         {
           product && product.quantity > 0  &&
           <div className="flex items-center justify-center gap-4 text-center w-full sm:w-1/2">
             <BuyProduct product={product} />
-            <FavoriteProduct product={product} />
+            <AddFavoriteProduct product={product} />
           </div>
         }
       </main>

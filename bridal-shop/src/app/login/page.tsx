@@ -19,7 +19,8 @@ export default function Login() {
       const { token }  = response.data;
       if(token){
         Cookie.set('token', token, { expires: 1 });
-        router.push('/');
+        router.refresh();
+        router.push('/user');
       }
     }catch(e){ console.log(e); }
   }

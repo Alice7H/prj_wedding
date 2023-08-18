@@ -1,7 +1,7 @@
 import decode from 'jwt-decode'
 import Cookies from 'js-cookie'
 
-interface User {
+export interface User {
   sub: string
   name: string
   avatarUrl: string
