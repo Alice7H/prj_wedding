@@ -16,7 +16,7 @@ interface IProps {
 export function Products({urlType, type, title}: IProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [category, setCategory] = useState<string>('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 8;
 
@@ -27,7 +27,6 @@ export function Products({urlType, type, title}: IProps) {
 
   useEffect(() => {
     async function getProducts(){
-      setLoading(true);
       try{
         const res = await api.get(`/product/${urlType}`)
         const data = await res.data;
@@ -52,6 +51,10 @@ export function Products({urlType, type, title}: IProps) {
     if(currentPage > 1){
       setCurrentPage(currentPage - 1);
     }
+  }
+
+  if (loading) {
+    return <h2 className="text-center text-main font-bold">Carregando...</h2>;
   }
 
   return (

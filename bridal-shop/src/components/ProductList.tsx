@@ -8,12 +8,9 @@ interface IProps {
   urlType: string;
 }
 export function ProductList({loading, products, urlType}: IProps) {
+
   if(!loading && products.length == 0){
     return <h2 className="text-center">Produtos não encontrados</h2>;
-  }
-
-  if (loading) {
-    return <h2 className="text-center">Loading...</h2>;
   }
 
   return  (
