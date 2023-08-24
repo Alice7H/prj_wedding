@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Product } from "@/types/Products";
 import { api } from "@/lib/api";
 import { AddFavoriteProduct } from "@/containers/AddFavoriteProduct";
+import { BuyProduct } from "@/containers/BuyProduct";
 
 export default function AccessoriesDetails() {
   const params = useParams();
@@ -45,11 +46,9 @@ export default function AccessoriesDetails() {
         </div>
       </div>
       {
-      product && product.quantity > 0  &&
+        product && product.quantity > 0  &&
         <div className="flex items-center justify-center gap-4 text-center w-full sm:w-1/2">
-          <button className="text-main font-bold border rounded-lg py-2 px-4 mt-4" disabled={product?.quantity == 0 ? true : false} >
-            Comprar
-          </button>
+          <BuyProduct product={product} />
           <AddFavoriteProduct product={product} />
         </div>
       }
