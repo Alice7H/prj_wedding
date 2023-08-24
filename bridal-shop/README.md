@@ -52,3 +52,8 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Definindo layout de rotas
 - Middleware de autenticação
 - Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
+
+## Possíveis mudanças
+
+- Modificação de medidas (measurements), exibindo uma imagem de tabela com medidas mais detalhadas de vestido e dos acessórios.
+- Adição do campo de tamanho (size) que atualmente usa as informações de medidas (PP, P, M, G, GG e único).

@@ -34,3 +34,33 @@ Example: `http://localhost:3333/products` => get a list of products
 - Get favorite products by user id: `/user/favorite_prod/:id`
 - Post favorite product: `/favorite_prod`
 - Delete favorite product: `/favorite_prod`
+
+## Possíveis mudanças
+
+Adicionar tabela de:
+
+- Cliente : 'id, address, email, phone'
+- Pagamento: 'id, datePay, total, details'
+- Pedido: 'id, dateOrdered, dateShipped, ship_to, status, total'
+- Status de Pedido: 'new, hold, shipped, delivered, closed'
+
+Adicionar campo tamanho (size) e categoria de tamanho" (size_category or classification_size).
+Exemplo:
+
+- U => único
+- PP => extra pequeno
+- P => pequeno
+- M => médio
+- G => grande
+- GG => extra grande
+- XG => extra extra grande
+
+Ou em inglês:
+
+- OSFA => One-Size-Fits-All (tamanho único)
+- XS => extra small (extra pequeno)
+- S => small (pequeno)
+- M => medium (médio)
+- L => large (grande)
+- XL => extra large (extra grande)
+- XXL => extra extra large (extra extra grande)
