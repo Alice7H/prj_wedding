@@ -32,7 +32,7 @@ export function MenuOptions(){
             >
               <ul className='my-4'>
                 <li tabIndex={1}><a className="hover:underline" href="/user">Perfil</a></li>
-                <li tabIndex={2}><a className="hover:underline" href="/">Compras</a></li>
+                <li tabIndex={2}><a className="hover:underline" href="/cart">Compras</a></li>
                 <li tabIndex={3}><a className="hover:underline" href="/api/auth/logout">Sair</a></li>
               </ul>
             </div>
