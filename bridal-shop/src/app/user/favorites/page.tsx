@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { Product } from "@/types/Products";
 import Image from "next/image";
 import { Footer } from "@/components/Footer";
+import { useRouter } from "next/navigation";
 
 interface UserProduct {
   userId: string;
@@ -15,22 +16,31 @@ interface UserProduct {
 }
 
 export default function Favorites() {
-  const [favProducts, setFavProducts] = useState<UserProduct[]|null>(null);
+  const [favProducts, setFavProducts] = useState<UserProduct[]>([]);
+  const [loadingProducts, setLoadingProducts] = useState(true);
+  const router = useRouter();
+
   useEffect(()=> {
     async function getFavorites(){
-      const user = getUser();
-      const token = Cookies.get('token');
-      const res = await api.get(`/user/favorite_prod/${user.sub}`, {
-        headers: { Authorization: 'Bearer ' + token }
-      })
-      if(res.status == 200){
-        setFavProducts(res.data);
+      try{
+        const user = getUser();
+        const token = Cookies.get('token');
+        const res = await api.get(`/user/favorite_prod/${user.sub}`, {
+          headers: { Authorization: 'Bearer ' + token }
+        })
+        if(res.status == 200){
+          setFavProducts(res.data);
+        }
+        setLoadingProducts(false);
+      }catch(error) {
+        router.push('/');
       }
     }
     getFavorites();
+  },[router])
 
-  },[])
 
+  if(loadingProducts) return <p className="text-center text-main font-bold">Carregando...</p>
 
   return (
     <>
