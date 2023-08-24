@@ -36,14 +36,19 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Exibir detalhes de acessórios
 - Rota de logout
 - Salvar token nos cookies
+- Favoritar itens do usuário
+- Exibir lista com itens favoritos
+- Lógica dos formulários de login.
+- Salvar produtos no localStorage / no carrinho de compras
 
 ## Em construção
 
-- Adicionar itens (acessórios e vestidos) no carrinho de compras
-- Favoritar itens do usuário
-- Lógica dos formulários de login e cadastro do usuário.
+- Exibir página de compras ou "carrinho de compras"
+- Exibir produtos e total no carrinho de compras
+- Remover produtos do carrinho de compras
+- Verificar se os produtos estão disponíveis para compra
+- Barrar a ação de favoritar o produto mais de uma vez
+- Lógica dos formulários de cadastro do usuário.
 - Definindo layout de rotas
 - Middleware de autenticação
-- Exibir produtos e total no carrinho de compras
-- Salvar produtos no localStorage
-- Exibir lista com itens favoritos
+- Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
