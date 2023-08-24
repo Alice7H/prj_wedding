@@ -40,12 +40,12 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Exibir lista com itens favoritos
 - Lógica dos formulários de login.
 - Salvar produtos no localStorage / no carrinho de compras
-
-## Em construção
-
 - Exibir página de compras ou "carrinho de compras"
 - Exibir produtos e total no carrinho de compras
 - Remover produtos do carrinho de compras
+
+## Em construção
+
 - Verificar se os produtos estão disponíveis para compra
 - Barrar a ação de favoritar o produto mais de uma vez
 - Lógica dos formulários de cadastro do usuário.
