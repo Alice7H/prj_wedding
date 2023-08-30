@@ -43,6 +43,7 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Exibir página de compras ou "carrinho de compras"
 - Exibir produtos e total no carrinho de compras
 - Remover produtos do carrinho de compras
+- Usuário não autenticados não podem comprar ou favoritar produtos
 
 ## Em construção
 
