@@ -8,6 +8,15 @@ interface IProps {
   product: Product;
 }
 
+interface ProductData {
+  userId: string,
+  productId: string,
+  name: string,
+  price: string,
+  coverUrl: string,
+  size: string
+}
+
 export function BuyProduct({product}: IProps){
   const [isModalClosed, setIsModalClosed] = useState(true);
   const sizes = product.measurements.split(" ");
@@ -16,17 +25,17 @@ export function BuyProduct({product}: IProps){
     setIsModalClosed(!isModalClosed);
   }
 
-  function handleSelectSize(event: FormEvent<HTMLFormElement>) {
+  function handleSubmitSize(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget)
     const size = formData.get('size') as string;
-    addProductInLocalStorage(size);
+    const data = formatProductData(size);
+    if(data) addProductInLocalStorage(data);
     setIsModalClosed(true);
   }
 
-  function addProductInLocalStorage(size: string) {
+  function addProductInLocalStorage(data: ProductData) {
     const cartData = getLocalStorageProducts();
-    const data = formatProductData(size);
     let allProducts = [];
     if(cartData != null) allProducts = [data, ...cartData];
     else allProducts = [data];
@@ -35,14 +44,18 @@ export function BuyProduct({product}: IProps){
   }
 
   function formatProductData(size: string) {
-    const userId = getUser().sub;
-    return {
-      userId: userId,
-      productId: product?.id,
-      name: product?.name,
-      price: product?.price,
-      coverUrl: product?.coverUrl,
-      size: size
+    try{
+      const userId = getUser().sub;
+      return {
+        userId: userId,
+        productId: product?.id,
+        name: product?.name,
+        price: product?.price,
+        coverUrl: product?.coverUrl,
+        size: size
+      }
+    }catch(e){
+      alert('Erro: Você não está autorizado.');
     }
   }
 
@@ -66,7 +79,7 @@ export function BuyProduct({product}: IProps){
         <ProductModal
           handleShowModal={handleShowModal}
           sizes={sizes}
-          handleSelectSize={handleSelectSize}
+          handleSubmitSize={handleSubmitSize}
         />
       }
     </>
