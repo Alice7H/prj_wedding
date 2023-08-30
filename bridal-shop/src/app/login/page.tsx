@@ -12,6 +12,14 @@ export default function Login() {
     event.preventDefault();
     try{
       const formData = new FormData(event.currentTarget)
+      if(!formData.get('email')){
+        alert('Informe o e-mail');
+        return;
+      }
+      if(!formData.get('password')){
+        alert('Informe a senha');
+        return;
+      }
       const response = await api.post('/login', {
         email: formData.get('email'),
         password: formData.get('password'),
