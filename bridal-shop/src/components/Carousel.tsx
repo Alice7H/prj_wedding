@@ -31,19 +31,30 @@ export function Carousel () {
   }
 
   return (
-    <div className="w-full flex items-center justify-center gap-1 relative">
-      <div className="absolute left-0 top-1/2 cursor-pointer" onClick={handlePreviousSlide}>
+    <div className="w-full flex items-center justify-center gap-1 relative transition-all ease-in-out delay-75">
+      <button className="absolute left-0 top-1/2 cursor-pointer"
+        onClick={handlePreviousSlide}
+        onKeyDown={(e)=> e.key === 'Enter' && handlePreviousSlide }
+      >
         <div className="pl-[5px] w-[25px] rounded-full bg-white border">❮</div>
-      </div>
+      </button>
       {
         dresses.map((dress, index) =>
-        <div key={index} onClick={()=> openModal(index)}>
-          <Image src={dress} alt="vestido" width={200} height={200} className="rounded-lg"/>
+        <div
+          tabIndex={0}
+          key={index}
+          onClick={()=> openModal(index)}
+          className={index == 1 ? "cursor-pointer w-[252px] z-10": ""}
+        >
+          <Image src={dress} alt="vestido" width={200} height={200} className={index == 1 ? "w-[252px] rounded-2xl": "rounded-lg"}/>
         </div>)
       }
-      <div className="absolute right-0 top-1/2 cursor-pointer" onClick={handleNextSlide}>
+      <button className="absolute right-0 top-1/2 cursor-pointer"
+        onClick={handleNextSlide}
+        onKeyDown={(e)=> e.key === 'Enter' && handleNextSlide}
+      >
         <div className="pl-[5px] w-[25px] rounded-full bg-white border">❯</div>
-      </div>
+      </button>
     </div>
   )
 }
