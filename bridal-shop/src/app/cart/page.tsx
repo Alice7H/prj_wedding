@@ -4,6 +4,7 @@ import { getUser } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { EmptyCart } from "@/components/EmptyCart";
+import { useRouter } from "next/navigation";
 
 interface Cart {
   userId: string,
@@ -16,22 +17,27 @@ interface Cart {
 
 export default function Cart() {
   const [cart, setCart] = useState<Cart[]>([]);
+  const router = useRouter();
   const [loadingLocalStorage, setLoadingLocalStorage] = useState(true);
 
   useEffect(() => {
     function getProduct() {
-      setLoadingLocalStorage(true);
-      const data = JSON.parse(localStorage.getItem('product') as string);
-      const user = getUser();
-      // get available product
-      if(data[0] != undefined){
-        if(user.sub != data[0].userId) alert('Compra não autorizada');
-        setCart(data);
+      try{
+        setLoadingLocalStorage(true);
+        const data = JSON.parse(localStorage.getItem('product') as string);
+        const user = getUser();
+        // get available product
+        if(data[0] != undefined){
+          if(user.sub != data[0].userId) alert('Compra não autorizada');
+          setCart(data);
+        }
+        setLoadingLocalStorage(false);
+      }catch(error){
+        router.push('/login');
       }
-      setLoadingLocalStorage(false);
     }
     getProduct();
-  }, [])
+  }, [router])
 
 
   if(loadingLocalStorage) return  (
@@ -46,11 +52,11 @@ export default function Cart() {
   const totalArray = cart?.map((element) => element.price)
   const total = totalArray?.reduce((total, element) => total + parseFloat(element), 0)
 
-    function handleRemoveProduct(element: Cart){
-      const aux = cart?.filter((item) => item !== element);
-      setCart(aux as Cart[]);
-      localStorage.setItem('product', JSON.stringify(aux));
-    }
+  function handleRemoveProduct(element: Cart){
+    const aux = cart?.filter((item) => item !== element);
+    setCart(aux as Cart[]);
+    localStorage.setItem('product', JSON.stringify(aux));
+  }
 
   return(
     <>
