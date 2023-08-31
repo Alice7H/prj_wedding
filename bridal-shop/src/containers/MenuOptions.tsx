@@ -17,7 +17,7 @@ export function MenuOptions(){
           aria-label="User menu" aria-haspopup="true"
           tabIndex={0}
           >
-          <span className='flex max-w-[50px] gap-1'>
+          <span className='flex min-w-[50px] gap-1'>
             Opções
             <Image src={DropdownIcon} alt="Seta para exibir opções" width={15} height={15} />
           </span>
@@ -28,7 +28,7 @@ export function MenuOptions(){
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="user-menu"
-              className="z-10 absolute left-0 border bg-white shadow-xl w-[75%] px-4"
+              className="z-10 absolute left-0 border bg-white shadow-xl w-full px-4"
             >
               <ul className='my-4'>
                 <li tabIndex={1}><a className="hover:underline" href="/user">Perfil</a></li>

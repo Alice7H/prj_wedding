@@ -28,7 +28,7 @@ export default function Profile(){
     <main className="flex flex-col justify-center items-center text-main">
       {
         user?.avatarUrl
-        ? <Image src={user.avatarUrl} alt="avatar" className="my-10 sm:my-8 rounded-full" width={200} height={200}/>
+        ? <Image src={user.avatarUrl} alt="avatar" className="my-10 sm:my-8 rounded-full max-h-[200px]" width={200} height={200}/>
         : <Image src={Avatar} alt="avatar" className="my-8" width={200} height={200}/>
       }
       <h1>Bem vinda(o) {user?.name}</h1>
