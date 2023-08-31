@@ -5,15 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { EmptyCart } from "@/components/EmptyCart";
 import { useRouter } from "next/navigation";
-
-interface Cart {
-  userId: string,
-  productId: string,
-  coverUrl: string,
-  name: string,
-  price: string,
-  size: string,
-}
+import { Cart } from "@/types/Cart";
 
 export default function Cart() {
   const [cart, setCart] = useState<Cart[]>([]);
