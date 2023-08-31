@@ -3,11 +3,14 @@ import Image from "next/image";
 import facebookIcon from "../../public/facebook.png";
 import instagramIcon from "../../public/instagram.png";
 import tiktokIcon from "../../public/tiktok.png";
+import ButtonUp from "../../public/buttonUp.svg";
 
 export function Footer() {
   return (
     <footer className="mt-16 relative px-8">
-      {/* button to top */}
+      <a href="#topo" className="rounded-full absolute top-4 right-4 p-3 cursor-pointer" type="button">
+        <Image src={ButtonUp} alt="Ir para o topo"/>
+      </a>
       <div className="flex flex-col sm:flex-row justify-around items-center sm:items-start">
         <div>
           <h2 className="mb-4 flex-1 text-2xl text-main text-center font-bold">Contatos</h2>
