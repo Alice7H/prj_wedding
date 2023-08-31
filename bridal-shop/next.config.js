@@ -4,23 +4,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'picsum.photos',
+        hostname: '**',
         port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.kleinfeldbridal.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'www.libertyinlove.co.uk',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.shopify.com',
-        port: '',
+        pathname: '**',
       },
     ],
   }
