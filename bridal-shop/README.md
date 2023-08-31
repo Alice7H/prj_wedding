@@ -44,15 +44,17 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Exibir produtos e total no carrinho de compras
 - Remover produtos do carrinho de compras
 - Usuário não autenticados não podem comprar ou favoritar produtos
+- Barrar a ação de favoritar o produto mais de uma vez
+- Middleware de autenticação
+- Lógica dos formulários de cadastro do usuário.
 
 ## Em construção
 
 - Verificar se os produtos estão disponíveis para compra
-- Barrar a ação de favoritar o produto mais de uma vez
-- Lógica dos formulários de cadastro do usuário.
 - Definindo layout de rotas
-- Middleware de autenticação
 - Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
+- Adicionar modal para as imagens do carossel
+- Possibilitar zoom nas imagens
 
 ## Possíveis mudanças
 
