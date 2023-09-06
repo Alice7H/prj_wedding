@@ -47,13 +47,15 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Barrar a ação de favoritar o produto mais de uma vez
 - Middleware de autenticação
 - Lógica dos formulários de cadastro do usuário.
+- Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
+- O Correios Brasil utiliza a base do antigo Web Service do Correios e não aceita requisições de outra origem (CORS).
 
 ## Em construção
 
+- Usar a nova api dos correios, o antigo será desativado em breve. O acesso a ele deve ser feito através do perfil criado no Meu Correios (no momento, está com a mensagem "Erro ao se conectar com a base MySQL"), para criar credenciais e utilizar a API dos Correios.
 - Verificar se os produtos estão disponíveis para compra
 - Definindo layout de rotas
-- Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
-- Adicionar modal para as imagens do carossel
+- Adicionar modal para as imagens do carrossel
 - Possibilitar zoom nas imagens
 
 ## Possíveis mudanças
