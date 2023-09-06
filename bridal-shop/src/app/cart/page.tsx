@@ -6,6 +6,7 @@ import Image from "next/image";
 import { EmptyCart } from "@/components/EmptyCart";
 import { useRouter } from "next/navigation";
 import { Cart } from "@/types/Cart";
+import { Transportation } from "@/containers/Transportation";
 
 export default function Cart() {
   const [cart, setCart] = useState<Cart[]>([]);
@@ -70,7 +71,11 @@ export default function Cart() {
                 <tr className="border border-main" key={index}>
                   <td className="flex justify-center">{
                     element?.coverUrl &&
-                    <Image src={element.coverUrl} alt="Produto da loja" width={70} height={70}/>
+                    <Image src={element.coverUrl} alt="Produto da loja"
+                      rel="preload" priority
+                      width="0" height="0" sizes="100px"
+                      className="w-[50%] h-auto"
+                    />
                   }
                   </td>
                   <td> {element.name} </td>
@@ -80,7 +85,7 @@ export default function Cart() {
                     <button
                       onClick={()=>handleRemoveProduct(element)}
                       type="button"
-                      className="m-2 rounded-lg border border-main font-bold px-4 py-2"
+                      className="m-2 rounded-lg border border-main text-main font-bold px-4 py-2"
                     >
                       Remover
                     </button>
@@ -90,10 +95,13 @@ export default function Cart() {
             }
           </tbody>
         </table>
+        {/* <p className="self-end sm:mr-8">Frete: R$00.00</p> */}
         <p className="self-end sm:mr-8">Total: R${total?.toFixed(2)}</p>
-        <p className="self-end sm:mr-8">Frete: R$00.00</p>
+
+        <Transportation/>
+
         <div>
-          <button type="button" className="border border-main px-4 py-2 rounded-lg">
+          <button type="button" className="border border-main px-4 py-2 rounded-lg text-main font-bold">
             Confirmar compra
           </button>
         </div>
