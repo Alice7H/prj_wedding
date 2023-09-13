@@ -5,4 +5,5 @@ export interface Cart {
   name: string,
   price: string,
   size: string,
+  available?: boolean
 }
