@@ -8,7 +8,7 @@ import ButtonUp from "../../public/buttonUp.svg";
 export function Footer() {
   return (
     <footer className="mt-16 relative px-8">
-      <a href="#topo" className="rounded-full absolute top-4 right-4 p-3 cursor-pointer" type="button">
+      <a href="#topo" className="rounded-full absolute -top-5 right-4 p-3 cursor-pointer" type="button">
         <Image src={ButtonUp} alt="Ir para o topo"/>
       </a>
       <div className="flex flex-col sm:flex-row justify-around items-center sm:items-start">
