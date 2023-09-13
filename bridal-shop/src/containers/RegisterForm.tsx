@@ -1,5 +1,5 @@
 'use client'
-import { api } from "@/lib/api";
+import { api, createUser } from "@/lib/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -28,8 +28,7 @@ export function RegisterForm() {
 
   async function onSubmit(data: IFormInput){
     try{
-    const response = await api.post('/register', data);
-    const { token }  = response.data;
+    const token = await createUser(data);
     if(token){
       Cookie.set('token', token, { expires: 1 });
       router.refresh();

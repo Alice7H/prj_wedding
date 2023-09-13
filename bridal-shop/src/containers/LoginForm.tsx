@@ -1,5 +1,5 @@
 'use client'
-import { api } from "@/lib/api";
+import { api, loginUser } from "@/lib/api";
 import Cookie from 'js-cookie'
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -24,8 +24,7 @@ export function LoginForm() {
 
   async function onSubmit(data: IFormInput) {
     try{
-      const response = await api.post('/login', data)
-      const { token }  = response.data;
+      const token = await loginUser(data);
       if(token){
         Cookie.set('token', token, { expires: 1 });
         router.refresh();

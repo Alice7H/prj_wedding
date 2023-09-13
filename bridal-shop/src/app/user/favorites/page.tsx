@@ -1,5 +1,5 @@
 'use client'
-import { api } from "@/lib/api";
+import { api, getFavoritesProducts } from "@/lib/api";
 import { getUser } from "@/lib/auth";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -26,9 +26,8 @@ export default function Favorites() {
       try{
         const user = getUser();
         const token = Cookies.get('token');
-        const res = await api.get(`/user/favorite_prod/${user.sub}`, {
-          headers: { Authorization: 'Bearer ' + token }
-        })
+        if(token == undefined) throw new Error('Token not found');
+        const res = await getFavoritesProducts({user, token});
         if(res.status == 200){ setFavProducts(res.data);}
         setLoadingProducts(false);
       }catch(error) {
@@ -38,6 +37,11 @@ export default function Favorites() {
     getFavorites();
   },[router])
 
+
+  function navigateToDetails(fav: UserProduct){
+    const type = fav.product.category.includes('vestido') ?  'dresses' : 'accessories';
+    router.push(`/${type}/details/${fav.productId}`);
+  }
 
   if(loadingProducts) return <p className="text-center text-main font-bold">Carregando...</p>
 
@@ -51,7 +55,9 @@ export default function Favorites() {
               <li key={fav.id}>
                 <div className="flex flex-col justify-center items-center relative">
                   <Image src={HeartIcon} alt="" className="absolute z-10 top-2 right-2" width={25} height={25}/>
-                  <Image src={fav.product.coverUrl} alt={fav.product.name} width={200} height={200} className="border border-main rounded-2xl" />
+                  <Image src={fav.product.coverUrl} alt={fav.product.name} width={200} height={200}
+                  className="border border-main rounded-2xl cursor-pointer" onClick={()=> navigateToDetails(fav)} />
+
                   <h3 className="mt-2">{fav.product.name}</h3>
                   <p>R${fav.product.price},00</p>
                 </div>

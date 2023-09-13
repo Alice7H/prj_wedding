@@ -3,7 +3,7 @@ import { Filter } from "@/components/Filter";
 import { Footer } from "@/components/Footer";
 import { Pagination } from "@/components/Pagination";
 import { ProductList } from "@/components/ProductList";
-import { api } from "@/lib/api";
+import { getProducts } from "@/lib/api";
 import { Product } from "@/types/Products";
 import { useEffect, useState } from "react";
 
@@ -26,20 +26,16 @@ export function Products({urlType, type, title}: IProps) {
   const currentProducts = filteredAccessories.slice(indexOfFirstProduct, indexOfLastProduct);
 
   useEffect(() => {
-    async function getProducts(){
+    async function getDressesOrAccessories(){
       try{
-        const res = await api.get(`/product/${urlType}`)
-        const data = await res.data;
-        setLoading(false);
-        if(data){
-          setProducts(data);
-        }
+        const data = await getProducts(urlType);
+        if(data) setProducts(data);
       } catch(err) {
         console.error(err);
-        setLoading(false);
       };
+      setLoading(false);
     }
-    getProducts()
+    getDressesOrAccessories()
   }, [urlType])
 
   const paginateFront = () => {
