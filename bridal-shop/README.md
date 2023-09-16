@@ -52,14 +52,19 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Arrumar botão de ir ao topo (está sobrescrevendo parte do rodapé)
 - Navegar da página de favoritos para os detalhes dos produtos
 - Verificar se os produtos estão disponíveis para compra
-- Adicionar o Correios Brasil (para consultar informações sobre o CEP, calcular o preço e os prazos das entregas das encomendas).
-- O Correios Brasil utiliza a base do antigo Web Service do Correios e não aceita requisições de outra origem (CORS).
+- Adicionar o Correios Brasil (para consultar informações sobre o CEP).
+- Uso do puppeteer para pegar informações de cálculo de frete com prazo e valor de sedex e pac, usando informações do site 'cepcerto'.
 
 ## Em construção
 
-- Usar a nova api dos correios, o antigo será desativado em breve. O acesso a ele deve ser feito através do perfil criado no Meu Correios (no momento, está com a mensagem "Erro ao se conectar com a base MySQL"), para criar credenciais e utilizar a API dos Correios.
+- Melhorar o sistema.
+- Calcular frete sem o uso do puppeteer.
+- Salvar o endereço para entrega do cliente.
+- Salvar o tipo de entrega do cliente (SEDEX ou PAC, quando possível).
+- Calcular o valor total da compra (produtos + frete).
 
 ## Possíveis mudanças
 
+- Usar a nova api dos correios, o antigo será desativado em breve. O acesso a ele deve ser feito através do perfil criado no Meu Correios, para criar credenciais e utilizar a API dos Correios.
 - Modificação de medidas (measurements), exibindo uma imagem de tabela com medidas mais detalhadas de vestido e dos acessórios.
 - Adição do campo de tamanho (size) que atualmente usa as informações de medidas (PP, P, M, G, GG e único).
