@@ -12,7 +12,7 @@ export async function searchAddress(cep: string) {
     };
     return data
   }catch(e){
-    console.log('Erro: cep não encontrado');
+    console.log(e);
     return null;
   }
 }
@@ -25,7 +25,7 @@ export async function handleGetPrice(cep: string) {
       nVlPeso: '0.5',
       nCdFormato: '1',
       nVlComprimento: '20',
-      nVlAltura: '20',
+      nVlAltura: '9',
       nVlLargura: '30',
       nCdServico: ['04014', '04510'], //Array com os códigos de serviço
       nVlDiametro: '0',

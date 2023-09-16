@@ -7,6 +7,7 @@ import { EmptyCart } from "@/components/EmptyCart";
 import { useRouter } from "next/navigation";
 import { Cart } from "@/types/Cart";
 import { verifyAvailableProduct } from "@/lib/api";
+import { Transportation } from "@/containers/Transportation";
 
 export default function Cart() {
   const [cart, setCart] = useState<Cart[]>([]);
@@ -108,9 +109,10 @@ export default function Cart() {
         {/* <p className="self-end sm:mr-8">Frete: R$00.00</p> */}
         <p className="self-end sm:mr-8">Total: R${total?.toFixed(2)}</p>
 
+        < Transportation qtd={cart.length} />
         <div>
           <button type="button" className="border border-main px-4 py-2 rounded-lg text-main font-bold">
-            Confirmar compra
+            Continuar compra
           </button>
         </div>
       </main>
