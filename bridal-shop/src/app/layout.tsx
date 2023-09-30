@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from  "../app/favicon.ico";
 import { MenuOptions } from '@/containers/MenuOptions';
 import { cookies } from 'next/dist/client/components/headers';
+import { CartProvider } from '@/context/cart.context';
 
 const inika = Inika({
   subsets: ['latin'],
@@ -38,7 +39,9 @@ export default function RootLayout({children}: IRootLayout) {
             }
           </ul>
         </header>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   )

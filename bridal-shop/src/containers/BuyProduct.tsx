@@ -1,6 +1,6 @@
 'use client'
 import { ProductModal } from "@/components/ProductModal";
-import { getUser } from "@/lib/auth";
+import { useCart } from "@/hooks/cart";
 import { Product } from "@/types/Products";
 import { FormEvent, useState } from "react";
 
@@ -8,16 +8,8 @@ interface IProps {
   product: Product;
 }
 
-interface ProductData {
-  userId: string,
-  productId: string,
-  name: string,
-  price: string,
-  coverUrl: string,
-  size: string
-}
-
 export function BuyProduct({product}: IProps){
+  const { addToCart } = useCart();
   const [isModalClosed, setIsModalClosed] = useState(true);
   const sizes = product.measurements.split(" ");
 
@@ -30,39 +22,21 @@ export function BuyProduct({product}: IProps){
     const formData = new FormData(event.currentTarget)
     const size = formData.get('size') as string;
     const data = formatProductData(size);
-    if(data) addProductInLocalStorage(data);
+    if(data) addToCart(data);
     setIsModalClosed(true);
   }
 
-  function addProductInLocalStorage(data: ProductData) {
-    const cartData = getLocalStorageProducts();
-    let allProducts = [];
-    if(cartData != null) allProducts = [data, ...cartData];
-    else allProducts = [data];
-    localStorage.setItem('product', JSON.stringify(allProducts));
-    alert('Produto adicionado no carrinho.');
-  }
-
   function formatProductData(size: string) {
-    try{
-      const userId = getUser().sub;
-      return {
-        userId: userId,
-        productId: product?.id,
-        name: product?.name,
-        price: product?.price,
-        coverUrl: product?.coverUrl,
-        size: size
-      }
-    }catch(e){
-      alert('Erro: Você não está autorizado.');
+    return {
+      id: Math.floor((Math.random() * 5000) + 1) + 'bFTa' + Math.floor((Math.random() * 10) + 1),
+      productId: product?.id,
+      name: product?.name,
+      quantity: 1,
+      price: parseFloat(product?.price),
+      coverUrl: product?.coverUrl,
+      size: size,
+      available: true,
     }
-  }
-
-  function getLocalStorageProducts() {
-    const product = localStorage.getItem('product');
-    if (!product) return null;
-    return JSON.parse(product);
   }
 
   return (
