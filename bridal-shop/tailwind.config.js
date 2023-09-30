@@ -11,7 +11,8 @@ module.exports = {
       main: '#5B3D25',
       white: '#FFFFFF',
       danger: '#DC2626',
-      black: '#000000'
+      black: '#000000',
+      mint: '#98FB98',
     },
     fontSize: {
       sm: ['14px', '20px'],

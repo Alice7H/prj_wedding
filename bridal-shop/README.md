@@ -54,14 +54,18 @@ Abra em [http://localhost:3000](http://localhost:3000) com seu navegador e você
 - Verificar se os produtos estão disponíveis para compra
 - Adicionar o Correios Brasil (para consultar informações sobre o CEP).
 - Uso do puppeteer para pegar informações de cálculo de frete com prazo e valor de sedex e pac, usando informações do site 'cepcerto'.
+- Salvar o endereço para entrega do cliente.
+- Calcular o valor total da compra (produtos + frete).
+- Remover endereço (manter o endereço no pedido)
+- Mudar o local de endereço para envio
 
 ## Em construção
 
-- Melhorar o sistema.
-- Calcular frete sem o uso do puppeteer.
-- Salvar o endereço para entrega do cliente.
+- Salvar pedido
+- Registrar pagamento
+- Calcular frete
 - Salvar o tipo de entrega do cliente (SEDEX ou PAC, quando possível).
-- Calcular o valor total da compra (produtos + frete).
+- Melhorar o sistema.
 
 ## Possíveis mudanças
 
