@@ -17,22 +17,25 @@ model User {
   hashPassword String
   avatarUrl    String
   favProducts  UserProduct[]
+  address      Address[]
+  order        Order[]
 }
 
 model Product {
-  id           String        @id @default(uuid())
+  id           String         @id @default(uuid())
   name         String
   coverUrl     String
   description  String
-  price        String
+  price        Decimal
   composition  String
   color        String
   length       String
   measurements String
   quantity     Int
-  createdAt    DateTime      @default(now())
+  createdAt    DateTime       @default(now())
   userProd     UserProduct[]
   category     String
+  productOrder ProductOrder[]
 }
 
 model UserProduct {
@@ -41,6 +44,69 @@ model UserProduct {
   userId    String
   user      User    @relation(fields: [userId], references: [id])
   product   Product @relation(fields: [productId], references: [id])
+}
+
+model Address {
+  id         String  @id @default(uuid())
+  zipCode    String
+  street     String
+  complement String
+  district   String
+  city       String
+  state      String
+  phone      String
+  email      String
+  full_name  String
+  ship_to    Boolean
+  userId     String
+  user       User    @relation(fields: [userId], references: [id])
+}
+
+model Order {
+  id           String         @id @default(uuid())
+  dateOrdered  DateTime
+  status       String
+  total        Decimal
+  shippingId   String         @unique
+  userId       String
+  address      String
+  productOrder ProductOrder[]
+  shipping     Shipping       @relation(fields: [shippingId], references: [id])
+  user         User           @relation(fields: [userId], references: [id])
+  payment      Payment?
+}
+
+model Shipping {
+  id                 String   @id @default(uuid())
+  shippingDate       DateTime
+  trackShippingValue String
+  shippingMethod     String
+  shippingValue      Decimal
+  shippingZipCode    String
+  shippingRegion     String
+  order              Order?
+}
+
+model ProductOrder {
+  id         String  @id @default(uuid())
+  quantity   Int
+  unityPrice Decimal
+  subtotal   Decimal
+  orderId    String
+  prodId     String
+  product    Product @relation(fields: [prodId], references: [id])
+  order      Order   @relation(fields: [orderId], references: [id])
+}
+
+model Payment {
+  id             String   @id @default(uuid())
+  paymentType    String
+  paymentDate    DateTime
+  paymentDetails String
+  paid           Boolean
+  total          Decimal
+  orderId        String   @unique
+  order          Order    @relation(fields: [orderId], references: [id])
 }
 
 // model Category {

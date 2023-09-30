@@ -10,6 +10,9 @@ import { productsRoutes } from './routes/products'
 import { usersRoutes } from './routes/user'
 import {userProductsRoutes } from './routes/favorites'
 import 'dotenv/config'
+import { addressRoutes } from './routes/address'
+import { ordersRoutes } from './routes/order'
+import { shippingRoutes } from './routes/shipping'
 
 const secretKey = process.env.JWT_SECRET_KEY as string;
 const logLevel = process.env.LOGLEVEL as string;
@@ -39,6 +42,9 @@ app.register(authRoutes)
 app.register(usersRoutes)
 app.register(productsRoutes)
 app.register(userProductsRoutes)
+app.register(addressRoutes)
+app.register(ordersRoutes)
+app.register(shippingRoutes)
 
 app
   .listen({ port: 3333, host: '0.0.0.0' })

@@ -39,10 +39,14 @@ Example: `http://localhost:3333/products` => get a list of products
 
 Adicionar tabela de:
 
-- Cliente : 'id, address, email, phone'
-- Pagamento: 'id, datePay, total, details'
-- Pedido: 'id, dateOrdered, dateShipped, ship_to, status, total'
-- Status de Pedido: 'new, hold, shipped, delivered, closed'
+- Cliente : 'id, name, address, phone'
+- Endereço: 'id, cep, street, complement, district, city, state, phone, email, full_name, ship_to'
+- Pagamento: 'id, type, datePay, total, details'
+- Tipos de Pagamento: 'credit, debit, payment_invoice, pix'
+- Pedido: 'id, dateOrdered, status, shippingId, userId, total'
+- Pedido-Produto: 'nameProd, quantity, subtotal, unityPrice, prodId, orderId'
+- Entrega: 'shippingDate, shippingMethod,shippingValue, cep'
+- Status de Pedido: 'new, hold, shipped, delivered, closed, canceled'
 
 Adicionar campo tamanho (size) e categoria de tamanho" (size_category or classification_size).
 Exemplo:

@@ -22,6 +22,16 @@ export async function productsRoutes(app: FastifyInstance) {
     })
   })
 
+  app.get('/products/available', async (_, reply) => {
+    const products = await prisma.product.findMany({
+      where: {quantity: { gte: 0 }}
+    })
+    if(products.length == 0){
+      return reply.status(404).send()
+    }
+    return products
+  })
+
   app.get('/product/dresses', async (_, reply) => {
     const product = await prisma.product.findMany({ where: { category: { contains: 'vestido' }}})
     if(product.length == 0){
