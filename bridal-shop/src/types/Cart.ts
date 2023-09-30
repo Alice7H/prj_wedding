@@ -1,9 +1,10 @@
 export interface Cart {
-  userId: string,
+  id: string,
   productId: string,
+  quantity: number,
   coverUrl: string,
   name: string,
-  price: string,
+  price: number,
   size: string,
-  available?: boolean
+  available: boolean
 }

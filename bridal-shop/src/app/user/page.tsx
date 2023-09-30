@@ -33,9 +33,12 @@ export default function Profile(){
       }
       <h1>Bem vinda(o) {user?.name}</h1>
       <br />
-      <div className="flex flex-col sm:flex-row gap-4">
-        <Link href="/user/favorites" className="border border-main rounded-xl p-4 sm:my-4">Ver favoritos</Link>
-        <Link href="/cart" className="border border-main rounded-xl p-4 sm:my-4">Ver carrinho</Link>
+      <div className="flex flex-col">
+        <Link href="/user/address" className="border border-main rounded-xl p-4 sm:my-4">Seus Endereços</Link>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link href="/user/favorites" className="border border-main rounded-xl p-4 sm:my-4">Ver favoritos</Link>
+          <Link href="/cart" className="border border-main rounded-xl p-4 sm:my-4">Ver carrinho</Link>
+        </div>
       </div>
     </main>
   );

@@ -1,7 +1,8 @@
 import { Cart } from '@/types/Cart';
 import { Product } from '@/types/Products';
 import axios from 'axios'
-import { User } from './auth';
+import { User, getUser } from './auth';
+import { Address } from '@/types/Address';
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -57,4 +58,44 @@ export async function verifyAvailableProduct(data: Cart){
     console.error(e);
     return;
   }
+}
+
+export async function getAddresses({user, token}: {user: User, token: string}){
+  const res = await api.get(`/address/${user.sub}`, {
+    headers: { Authorization: 'Bearer ' + token }
+  })
+  const data = await res.data;
+  return data;
+}
+
+export async function getShippingAddress({id, token}: {id: String, token: String}){
+  const res = await api.get(`/address/shipping/${id}`, {
+    headers: { Authorization: 'Bearer ' + token }
+  })
+  const address = res.data
+  return address
+}
+
+export async function createAddress({data, token} : {data: Address, token: string}) {
+  const response = await api.post('/address', data, {
+    headers: { 'Authorization': 'Bearer ' + token}
+  })
+  const address = response.data;
+  return address;
+}
+
+export async function updateShippingAddress({data, token} : {data: Address, token: string}) {
+  const response = await api.patch(`/address/shipping/${data.id}`, data, {
+    headers: { 'Authorization': 'Bearer ' + token}
+  })
+  const address = response.data;
+  return address;
+}
+
+export async function deleteAddress({id, token}: {id: String, token: string}){
+  const response = await api.delete(`/address/${id}`, {
+    headers: { 'Authorization': 'Bearer ' + token}
+  })
+  const address = response.data;
+  return address;
 }
