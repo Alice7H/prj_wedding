@@ -21,10 +21,10 @@ export function ShippingFee({cep, qtd}: {cep:string, qtd: number}) {
       const res = await fetch(`http://localhost:3000/api/shipping?cepOrigem=${cepOrigem}&cep=${cep}&peso=${pesoGramas}`);
       setLoadingFee(false);
       if(res.status == 200){
-       setShippingFee(null);
-       const data = await res.json();
-       const object = JSON.parse(data.message);
-       setShippingFee(object);
+        setShippingFee(null);
+        const data = await res.json();
+        const object = JSON.parse(data.message);
+        setShippingFee(object);
       }
     }catch(e){
       console.error(e);
